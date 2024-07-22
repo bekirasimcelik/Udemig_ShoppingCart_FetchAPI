@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!--* FontAwesome Link -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
-    <!--* link CSS -->
+    <!--*  Bootstrap Link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      <!--*
+      CSS
+      Link
+      --
+    />
     <link rel="stylesheet" href="style.css" />
+
     <title>My Shopping Card</title>
   </head>
   <body>
@@ -30,7 +40,7 @@
               class="cart-btn"
               type="button"
               data-bs-toggle="offcanvas"
-              data-bs-target="offcanvasRight"
+              data-bs-target="#offcanvasRight"
             >
               <span class="cart-items">0</span>
               <i class="fas fa-cart-shopping"></i>
@@ -40,5 +50,100 @@
       </div>
     </header>
     <!--? Header End -->
+
+    <!--? Banner Start  -->
+    <div class="banner-area">
+      <div class="banner">
+        <div class="banner-img">
+          <img src="./images//banner.png" alt="banner image" />
+        </div>
+        <div class="banner-content">
+          <span class="banner-content-subtitle">INDOORS</span>
+          <span class="banner-content-title"
+            >See Bamboo's New Range of Indoor Furniture</span
+          >
+          <span class="banner-content-text"
+            >Classic meet modern living, Bamboo has a fantastic range of indoor
+            furniture, perfect for any modern home</span
+          >
+          <a class="banner-content-link" href="#">SEE MORE</a>
+        </div>
+      </div>
+    </div>
+    <!--? Banner End  -->
+
+    <!--? Product List Start -->
+    <div class="product-area">
+      <div class="container">
+        <h2 class="product-area-title">Featured Product</h2>
+        <div class="row" id="products-dom">
+          <div class="col-lg-4 col-md-6">
+            <div class="product">
+              <div class="product-image">
+                <img src="./images//product1.png" alt="product" />
+              </div>
+              <div class="product-hover">
+                <span class="product-title"> Table </span>
+                <span class="product-title"> $299 </span>
+                <button class="btn-add-to-cart">
+                  <i class="fas fa-cart-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--? Product List End -->
+
+    <!--? Card List Start -->
+    <div class="offcanvas offcanvas-end" id="offcanvasRight">
+      <div class="offcanvas-header">
+        <h5>Shopping Cart</h5>
+        <button
+          class="btn-close"
+          type="button"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-bodt">
+        <div class="shopping-cart">
+          <ul class="cart-list">
+            <li class="cart-list-item">
+              <div class="cart-left">
+                <div class="cart-left-image">
+                  <img src="./images/product1.png" alt="product" />
+                </div>
+                <div class="cart-left-info">
+                  <a href="#" class="cart-left-info-title">table</a>
+                  <span class="acrt-left-info-price">$299</span>
+                </div>
+              </div>
+              <div class="cart-right">
+                <div class="cart-right-quantity">
+                  <button class="quantity-minus">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <span class="quantity">0</span>
+                  <button class="quantity-plus">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="cart-right-remove">
+                  <button class="cart-remove-btn">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--? Card List End -->
+
+    <!--* Bootstrap JS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
