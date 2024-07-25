@@ -61,13 +61,32 @@ class UI {
         button.addEventListener("click", (event) => {
           event.target.disabled = true;
           event.target.style.opacity = ".3";
+          // get product from products
+          let cartItem = { ...Storage.getProduct(id), amount: 1 };
+          // add product to the cart
+          cart = [...cart, cartItem];
+          // save cart in local storage
+          Storage.saveCart(cart);
         });
       }
     });
   }
 }
 
-class Storage {}
+class Storage {
+  static saveProducts(products) {
+    localStorage.setItem("ls-products", JSON.stringify(products));
+  }
+
+  static getProduct(id) {
+    let products = JSON.parse(localStorage.getItem("ls-products"));
+    return products.find((product) => product.id === id);
+  }
+
+  static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
@@ -77,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .getProducts()
     .then((products) => {
       ui.displayProducts(products);
+      Storage.saveProducts(products);
     })
     .then(() => {
       ui.getBagButtons();
