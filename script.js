@@ -69,6 +69,8 @@ class UI {
           Storage.saveCart(cart);
           // save cart values
           this.saveCartValues(cart);
+          // display cart item
+          this.addCartItem(cartItem);
         });
       }
     });
@@ -84,6 +86,39 @@ class UI {
 
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
     cartItems.innerText = itemsTotal;
+  }
+
+  addCartItem(item) {
+    const li = document.createElement("li");
+    li.classList.add("cart-list-item");
+    li.innerHTML = `
+                  <div class="cart-left">
+                <div class="cart-left-image">
+                  <img src="${item.image}" alt="product" />
+                </div>
+                <div class="cart-left-info">
+                  <a href="#" class="cart-left-info-title">${item.title}</a>
+                  <span class="acrt-left-info-price">$ ${item.price}</span>
+                </div>
+              </div>
+              <div class="cart-right">
+                <div class="cart-right-quantity">
+                  <button class="quantity-minus" data-id=${item.id}>
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <span class="quantity">${item.amount}</span>
+                  <button class="quantity-plus" data-id=${item.id}>
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="cart-right-remove">
+                  <button class="cart-remove-btn" data-id=${item.id}>
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+    `;
+    cartContent.appendChild(li);
   }
 }
 
