@@ -136,6 +136,21 @@ class UI {
   populateCart(cart) {
     cart.forEach((item) => this.addCartItem(item));
   }
+
+  cartLogic() {
+    clearCartBtn.addEventListener("click", () => {
+      this.clearCart();
+    });
+  }
+
+  clearCart() {
+    letcartItems = cart.map((item) => item.id);
+    cartItems.forEach((id) => this.removeItem(id));
+  }
+
+  removeItem(id) {
+    cart = cart.filter((item) => item.id !== id);
+  }
 }
 
 class Storage {
