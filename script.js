@@ -144,12 +144,24 @@ class UI {
   }
 
   clearCart() {
-    letcartItems = cart.map((item) => item.id);
+    let cartItems = cart.map((item) => item.id);
     cartItems.forEach((id) => this.removeItem(id));
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children);
+    }
   }
 
   removeItem(id) {
     cart = cart.filter((item) => item.id !== id);
+    this.saveCartValues(cart);
+    Storage.saveCart(cart);
+    let button = this.getSingleButton(id);
+    button.disable = false;
+    button.style.opacity = "";
+  }
+
+  getSingleButton(id) {
+    return buttonsDOM.find((button) => button.dataset.id === id);
   }
 }
 
@@ -188,5 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(() => {
       ui.getBagButtons();
+      ui.cartLogic();
     });
 });
