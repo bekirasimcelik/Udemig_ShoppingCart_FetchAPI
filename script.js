@@ -141,6 +141,15 @@ class UI {
     clearCartBtn.addEventListener("click", () => {
       this.clearCart();
     });
+
+    cartContent.addEventListener("click", (event) => {
+      if (event.target.classList.contains("cart-remove-btn")) {
+        let removeItem = event.target;
+        let id = removeItem.dataset.id;
+        removeItem.parentElement.parentElement.parentElement.remove();
+        this.removeItem(id);
+      }
+    });
   }
 
   clearCart() {
