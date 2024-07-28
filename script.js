@@ -148,6 +148,15 @@ class UI {
         let id = removeItem.dataset.id;
         removeItem.parentElement.parentElement.parentElement.remove();
         this.removeItem(id);
+      } else if (event.target.classList.contains("quantity-minus")) {
+        let lowerAmount = event.target;
+        let id = lowerAmount.dataset.id;
+        let tempItem = cart.find((item) => item.id === id);
+        tempItem.amount = tempItem.amount - 1;
+        if (tempItem.amount > 0) {
+          Storage.saveCart(cart);
+          this.saveCartValues(cart);
+        }
       }
     });
   }
